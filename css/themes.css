@@ -1,0 +1,36 @@
+/* ==========================================================================
+   themes.css — theme-dependent flourishes layered on top of variables.css
+   ========================================================================== */
+
+/* smooth theme swap for every color-bearing element */
+body, .card, .polaroid, .chip, .btn, .field input, .field textarea, .site-header {
+  transition: background-color var(--dur-mid) var(--ease-soft),
+              color var(--dur-mid) var(--ease-soft),
+              border-color var(--dur-mid) var(--ease-soft),
+              box-shadow var(--dur-mid) var(--ease-soft);
+}
+
+/* hero backdrop glow differs per theme so neon pink reads correctly on both */
+[data-theme='dark'] .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 480px;
+  background: radial-gradient(ellipse at 30% 0%, rgba(255,47,158,0.22), transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(33,230,193,0.14), transparent 55%);
+  z-index: 0;
+  pointer-events: none;
+}
+[data-theme='light'] .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 480px;
+  background: radial-gradient(ellipse at 30% 0%, rgba(255,47,158,0.14), transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(33,230,193,0.16), transparent 55%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* prevent theme-swap flash: hidden until theme.js sets data-theme */
+html:not([data-theme]) body { visibility: hidden; }

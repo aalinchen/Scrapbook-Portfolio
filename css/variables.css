@@ -1,0 +1,95 @@
+/* ==========================================================================
+   variables.css — design tokens
+   Scrapbook portfolio template. Change these to reskin the whole site.
+
+   👉 TRY THIS: change --accent-pink below to any color and reload — every
+   button, tag, and underline that uses it updates everywhere at once.
+   That's the whole point of CSS custom properties (variables): define a
+   value once, reuse it by name, change it in every other file with
+   var(--accent-pink) instead of retyping the hex code.
+   ========================================================================== */
+
+:root {
+  /* ---- type ---- */
+  --font-display: 'Caveat', 'Segoe Script', cursive;
+  --font-body: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.9rem;
+  --fs-base: 1rem;
+  --fs-md: 1.15rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2.25rem;
+  --fs-2xl: 3.25rem;
+  --fs-3xl: 4.75rem;
+
+  /* ---- spacing ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 7rem;
+
+  /* ---- shape ---- */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --paper-edge: 2px solid currentColor;
+
+  /* ---- motion ---- */
+  --ease-wobble: cubic-bezier(.68,-0.4,.27,1.4);
+  --ease-soft: cubic-bezier(.22,1,.36,1);
+  --dur-fast: 150ms;
+  --dur-mid: 320ms;
+  --dur-slow: 640ms;
+
+  /* ---- layout ---- */
+  --content-width: 1180px;
+  --header-height: 76px;
+
+  /* ---- accent palette (shared across themes) ---- */
+  --accent-pink: #ff2f9e;
+  --accent-pink-dim: #d1237f;
+  --accent-yellow: #ffcf3f;
+  --accent-teal: #21e6c1;
+  --accent-orange: #ff7a45;
+  --accent-lilac: #b98cff;
+}
+
+/* ---------------- Dark theme (default) ---------------- */
+:root,
+[data-theme='dark'] {
+  --bg: #15121c;
+  --bg-alt: #1c1826;
+  --paper: #211d2c;
+  --paper-2: #26212f;
+  --ink: #f6f1e8;
+  --ink-soft: #b7aec7;
+  --ink-faint: #7c7591;
+  --line: rgba(246, 241, 232, 0.14);
+  --tape-tint: rgba(255, 255, 255, 0.14);
+  --shadow-color: rgba(0, 0, 0, 0.55);
+  --scrim: rgba(21, 18, 28, 0.82);
+  --accent-yellow: #ffd23f;
+}
+
+/* ---------------- Light theme ---------------- */
+[data-theme='light'] {
+  --bg: #faf5ea;
+  --bg-alt: #f1e9d8;
+  --paper: #fffcf5;
+  --paper-2: #fff8ec;
+  --ink: #241f2e;
+  --ink-soft: #5c5468;
+  --ink-faint: #948c9f;
+  --line: rgba(36, 31, 46, 0.14);
+  --tape-tint: rgba(36, 31, 46, 0.1);
+  --shadow-color: rgba(90, 70, 40, 0.22);
+  --scrim: rgba(250, 245, 234, 0.86);
+  --accent-yellow: #f2a900;
+}

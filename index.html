@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrapbook — Free HTML/CSS/JS Portfolio Template</title>
+<meta name="description" content="Scrapbook: a free, beginner-friendly portfolio template built with plain HTML, CSS, and JavaScript. No build tools, no frameworks — just view source and learn.">
+
+<!--
+  ============================================================
+  SCRAPBOOK — a learn-by-example HTML/CSS/JS template
+  ============================================================
+  This file is HOME. There are 4 more pages: about.html,
+  projects.html, journal.html, contact.html — they all share
+  the same header/nav/footer markup, so once you understand
+  one page you understand all five.
+
+  Look for comments like the one around this block — they
+  mark the parts you're most likely to want to edit first.
+  Everything else (layout, spacing, animation) lives in the
+  css/ and js/ folders and is commented there too.
+  ============================================================
+-->
+
+<!-- This tiny inline script sets the color theme BEFORE the page
+     paints, so switching pages never causes a flash of the wrong
+     theme. It reads the choice saved by js/theme.js. -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('scrapbook-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+
+<!-- 3 Google Fonts loaded via CDN — swap these for any fonts you like.
+     Just update the family names here AND in css/variables.css. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Stylesheets load in this order on purpose: reset first, then
+     tokens, then everything that uses those tokens. See README.md
+     for what each file is responsible for. -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/themes.css">
+</head>
+<body data-page="home">
+<a class="visually-hidden" href="#main">Skip to content</a>
+
+<!-- ============================================================
+     HEADER / NAV — identical on every page. Edit the brand text
+     and links once, then copy this whole <header> + <nav> block
+     into the other pages if you add or rename a section.
+     ============================================================ -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="brand-dot"></span>your.name</a>
+    <nav class="nav-primary" aria-label="Primary">
+      <ul>
+        <li><a href="index.html" aria-current="page">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="projects.html">projects</a></li>
+        <li><a href="journal.html">journal</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <!-- Dark/light toggle. Logic lives in js/theme.js — this button
+           just needs the class "theme-toggle" to work anywhere. -->
+      <button class="icon-btn theme-toggle" aria-pressed="false" aria-label="Switch to light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <!-- Mobile menu button, hidden on desktop by css/layout.css.
+           Logic lives in js/nav.js. -->
+      <button class="icon-btn nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav drawer: full-screen overlay shown only under ~860px wide.
+     Try resizing your browser to see it, or use dev tools' device toolbar. -->
+<nav id="nav-drawer" class="nav-drawer" aria-label="Mobile">
+  <button class="icon-btn drawer-close" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <ul>
+    <li><a href="index.html">home</a></li>
+    <li><a href="about.html">about</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="journal.html">journal</a></li>
+    <li><a href="contact.html">contact</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- ============================================================
+       ✏️ EDIT ME — Hero
+       This is the first thing visitors see. Swap the eyebrow text,
+       headline, subtext, and button labels/links for your own.
+       ============================================================ -->
+  <section class="page-hero" data-sparkle-trail style="position:relative;">
+    <!-- Decorative SVGs. Each is just an <img> with a class for
+         animation (.float, .float-slow, .spin-slow) and inline
+         top/left/width to position it. Move, resize, delete, or
+         swap the src for any file in assets/svg/. -->
+    <img src="assets/svg/star.svg" class="doodle float" alt="" style="width:56px; top:14%; left:6%;" aria-hidden="true">
+    <img src="assets/svg/flower.svg" class="doodle float-slow" alt="" style="width:60px; top:60%; left:3%;" aria-hidden="true">
+    <img src="assets/svg/swirl.svg" class="doodle spin-slow" alt="" style="width:80px; top:8%; right:8%;" aria-hidden="true">
+    <img src="assets/svg/star-outline.svg" class="doodle float" alt="" style="width:40px; top:66%; right:12%;" aria-hidden="true">
+    <img src="assets/svg/arrow-curly.svg" class="doodle" alt="" style="width:120px; top:38%; right:2%; opacity:0.7;" aria-hidden="true">
+
+    <div class="wrap">
+      <p class="eyebrow reveal">a free portfolio template</p>
+      <h1 class="reveal" style="margin-top: var(--sp-3); max-width: 16ch;">Hi, I'm [Your Name]. This is Scrapbook.</h1>
+      <p class="reveal" style="margin-top: var(--sp-4); font-size: var(--fs-md); max-width: 50ch;">
+        A free, open, hand-made-feeling portfolio template built with plain HTML, CSS,
+        and JavaScript — no build tools, no frameworks. Fork it, break it, learn from it,
+        make it yours.
+      </p>
+      <div class="reveal" style="margin-top: var(--sp-6); display:flex; gap: var(--sp-4); flex-wrap: wrap;">
+        <a href="projects.html" class="btn btn-primary">see the demo pages</a>
+        <a href="contact.html" class="btn btn-ghost">try the contact form</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ✏️ EDIT ME — Corkboard intro
+       A good spot for a "what I'm working on right now" callout.
+       The sticky note on the right is just a styled <div> — see
+       .sticky-note in css/components.css.
+       ============================================================ -->
+  <section>
+    <div class="wrap">
+      <div class="corkboard reveal">
+        <img src="assets/svg/tape-pink.svg" class="tape" alt="" style="top:-14px; left:6%; transform: rotate(-6deg);" aria-hidden="true">
+        <img src="assets/svg/tape-teal.svg" class="tape" alt="" style="top:-14px; right:8%; transform: rotate(5deg);" aria-hidden="true">
+        <img src="assets/svg/cloud.svg" class="doodle float-slow" alt="" style="width:70px; bottom:6%; left:4%; opacity:0.5;" aria-hidden="true">
+
+        <div class="grid-3">
+          <div class="card tilt--1" style="grid-column: span 2;">
+            <p class="eyebrow">currently</p>
+            <h3 style="margin-top: var(--sp-2);">Say what you're building, learning, or into right now</h3>
+            <p style="margin-top: var(--sp-3);">
+              This card is a good home for a highlight project, a "now" statement, or
+              anything you want a first-time visitor to notice. Keep it short — two or
+              three sentences reads better than a wall of text.
+            </p>
+            <a href="projects.html" class="inline-link" style="display:inline-block; margin-top: var(--sp-4); font-family: var(--font-mono); font-size: var(--fs-sm);">see all projects →</a>
+          </div>
+          <div class="sticky-note tilt--3">
+            Tip: click the sun / moon icon top-right to try dark &amp; light mode.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ✏️ EDIT ME — Featured projects
+       Each .polaroid is one project card. Duplicate the <figure>
+       block to add more; delete extras to have fewer. Full project
+       grid with more detail lives on projects.html.
+       ============================================================ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">selected work</p>
+          <h2 class="scribble" style="margin-top: var(--sp-2);">A few things worth showing off</h2>
+        </div>
+        <a href="projects.html" class="inline-link" style="font-family: var(--font-mono); font-size: var(--fs-sm);">all projects →</a>
+      </div>
+
+      <div class="grid-3 reveal-stagger">
+        <figure class="polaroid tilt--2">
+          <div class="thumb" style="--thumb-a:#ff2f9e; --thumb-b:#b98cff;">
+            <img src="assets/svg/icon-lock.svg" alt="" aria-hidden="true">
+          </div>
+          <figcaption>Project One</figcaption>
+          <p class="cap-meta">One line describing it</p>
+        </figure>
+        <figure class="polaroid tilt--4">
+          <div class="thumb" style="--thumb-a:#21e6c1; --thumb-b:#ffd23f;">
+            <img src="assets/svg/icon-camera.svg" alt="" aria-hidden="true">
+          </div>
+          <figcaption>Project Two</figcaption>
+          <p class="cap-meta">One line describing it</p>
+        </figure>
+        <figure class="polaroid tilt--1">
+          <div class="thumb" style="--thumb-a:#ff7a45; --thumb-b:#ff2f9e;">
+            <img src="assets/svg/icon-code.svg" alt="" aria-hidden="true">
+          </div>
+          <figcaption>Project Three</figcaption>
+          <p class="cap-meta">One line describing it</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ✏️ EDIT ME — Skills / chip cloud
+       Each .chip is just a <span>. Add, remove, or reorder freely —
+       the layout wraps automatically (see .chip-cloud, display:flex
+       + flex-wrap in components.css).
+       ============================================================ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">toolbox</p>
+          <h2 class="scribble" style="margin-top: var(--sp-2);">What's in the pencil case</h2>
+        </div>
+      </div>
+      <div class="chip-cloud reveal-stagger">
+        <span class="chip tilt--1">HTML</span>
+        <span class="chip tilt--3">CSS</span>
+        <span class="chip tilt--2">JavaScript</span>
+        <span class="chip tilt--4">SVG</span>
+        <span class="chip tilt--1">Flexbox &amp; Grid</span>
+        <span class="chip tilt--5">Git</span>
+        <span class="chip tilt--2">Responsive Design</span>
+        <span class="chip tilt--3">Accessibility</span>
+        <span class="chip tilt--1">Whatever you're learning next</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ✏️ EDIT ME — Journal teaser
+       Links to journal.html. Each .card here is one teaser; the
+       full write-up would live as its own entry there.
+       ============================================================ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">from the journal</p>
+          <h2 class="scribble" style="margin-top: var(--sp-2);">Notes worth keeping</h2>
+        </div>
+        <a href="journal.html" class="inline-link" style="font-family: var(--font-mono); font-size: var(--fs-sm);">read more →</a>
+      </div>
+      <div class="grid-2 reveal-stagger">
+        <a class="card tilt--2" href="journal.html">
+          <p class="journal-date" style="font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--accent-pink);">MMM DD, YYYY</p>
+          <h3 style="margin-top: var(--sp-2);">Post title goes here</h3>
+          <p style="margin-top: var(--sp-2);">A one- or two-sentence summary that makes someone want to click through.</p>
+        </a>
+        <a class="card tilt--4" href="journal.html">
+          <p class="journal-date" style="font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--accent-pink);">MMM DD, YYYY</p>
+          <h3 style="margin-top: var(--sp-2);">Another post title</h3>
+          <p style="margin-top: var(--sp-2);">A one- or two-sentence summary that makes someone want to click through.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER — identical on every page, same as the header.
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4 class="scribble">Your Name</h4>
+        <p>A short tagline about who you are or what you make. One or two lines is plenty.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:hello@yourdomain.com">Email</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Your Name. Built with the Scrapbook template.</span>
+      <span>Free to use &amp; learn from — see README.md.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Order matters a little: theme before nav/animations isn't required,
+     but keeping them in this order matches the README's file list. -->
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

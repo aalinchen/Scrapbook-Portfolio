@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70" fill="none">
+  <path d="M4 8 L196 4 L194 64 L6 66 Z" fill="#ff2f9e" fill-opacity="0.55"/>
+  <path d="M4 8 L196 4 L194 64 L6 66 Z" fill="url(#stripes)" fill-opacity="0.4"/>
+  <path d="M4 8 L196 4 L194 64 L6 66 Z" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+  <defs>
+    <pattern id="stripes" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="7" height="14" fill="#ffffff" fill-opacity="0.5"/>
+    </pattern>
+  </defs>
+</svg>

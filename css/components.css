@@ -1,0 +1,261 @@
+/* ==========================================================================
+   components.css — buttons, cards, tape, stickers, tags, forms
+   ========================================================================== */
+
+/* ---------------- Buttons ---------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  padding: 0.75em 1.4em;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--ink);
+  transition: transform var(--dur-fast) var(--ease-wobble), box-shadow var(--dur-fast) var(--ease-soft), background var(--dur-fast);
+}
+.btn:hover { transform: translateY(-3px) rotate(-1deg); }
+.btn:active { transform: translateY(0) rotate(0); }
+
+.btn-primary {
+  background: var(--accent-pink);
+  border-color: var(--accent-pink);
+  color: #fff;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.btn-primary:hover { box-shadow: 6px 6px 0 var(--ink); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--accent-pink);
+}
+.btn-ghost:hover { box-shadow: 6px 6px 0 var(--accent-pink); }
+
+/* ---------------- Icon buttons (theme toggle, nav toggle) ---------------- */
+.icon-btn {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--line);
+  color: var(--ink);
+  transition: transform var(--dur-mid) var(--ease-wobble), border-color var(--dur-fast);
+}
+.icon-btn:hover { border-color: var(--accent-pink); transform: rotate(-12deg); }
+.icon-btn svg { width: 20px; height: 20px; }
+
+.theme-toggle .icon-moon { display: none; }
+[data-theme='light'] .theme-toggle .icon-sun { display: none; }
+[data-theme='light'] .theme-toggle .icon-moon { display: block; }
+
+/* ---------------- Tape ---------------- */
+.tape {
+  position: absolute;
+  width: 90px;
+  height: 34px;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 3px 3px var(--shadow-color));
+  z-index: 4;
+}
+.tape img, .tape svg { width: 100%; height: 100%; }
+
+/* ---------------- Paper card base ---------------- */
+.card {
+  position: relative;
+  background: var(--paper);
+  border-radius: var(--radius-md);
+  padding: var(--sp-5);
+  box-shadow: 0 10px 26px -14px var(--shadow-color), 0 1px 0 var(--line);
+  transition: transform var(--dur-mid) var(--ease-wobble), box-shadow var(--dur-mid) var(--ease-soft);
+}
+.card:hover {
+  transform: translateY(-6px) rotate(var(--tilt, -1deg));
+  box-shadow: 0 18px 34px -16px var(--shadow-color), 0 1px 0 var(--line);
+}
+
+/* ---------------- Polaroid (projects) ---------------- */
+.polaroid {
+  background: var(--paper);
+  padding: var(--sp-3) var(--sp-3) var(--sp-5);
+  border-radius: 4px;
+  box-shadow: 0 14px 26px -14px var(--shadow-color);
+  transform: rotate(var(--tilt, -2deg));
+  transition: transform var(--dur-mid) var(--ease-wobble), box-shadow var(--dur-mid);
+  position: relative;
+}
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 36px -16px var(--shadow-color);
+}
+.polaroid .thumb {
+  aspect-ratio: 4/3;
+  border-radius: 2px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--thumb-a, var(--accent-pink)), var(--thumb-b, var(--accent-lilac)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.polaroid .thumb svg { width: 46%; opacity: 0.9; }
+.polaroid figcaption {
+  padding-top: var(--sp-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+.polaroid .cap-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-faint);
+  margin-top: var(--sp-1);
+}
+
+/* ---------------- Tags ---------------- */
+.tag-row { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-3); }
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+  border: 1.5px dashed var(--accent-teal);
+  color: var(--ink);
+}
+.tag--pink { border-color: var(--accent-pink); }
+.tag--yellow { border-color: var(--accent-yellow); }
+.tag--orange { border-color: var(--accent-orange); }
+
+/* ---------------- Sticky note ---------------- */
+.sticky-note {
+  background: var(--accent-yellow);
+  color: #2a2200;
+  padding: var(--sp-5);
+  border-radius: 2px;
+  box-shadow: 0 10px 20px -12px var(--shadow-color);
+  transform: rotate(var(--tilt, 2deg));
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+}
+
+/* ---------------- Pin ---------------- */
+.pin {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px; height: 26px;
+  z-index: 5;
+  filter: drop-shadow(0 3px 3px var(--shadow-color));
+}
+
+/* ---------------- Journal entry ---------------- */
+.journal-entry {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: var(--sp-5);
+  padding-block: var(--sp-6);
+  border-bottom: 1px dashed var(--line);
+}
+.journal-entry:last-child { border-bottom: none; }
+.journal-date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-pink);
+  padding-top: var(--sp-1);
+}
+.journal-entry h3 { margin-bottom: var(--sp-2); }
+
+@media (max-width: 640px) {
+  .journal-entry { grid-template-columns: 1fr; gap: var(--sp-2); }
+}
+
+/* ---------------- Stat / skill chips ---------------- */
+.chip-cloud { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+.chip {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  padding: 0.55em 1em;
+  background: var(--paper);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform var(--dur-fast) var(--ease-wobble), border-color var(--dur-fast);
+}
+.chip:hover { border-color: var(--accent-pink); transform: rotate(-3deg) scale(1.05); }
+
+/* ---------------- Forms (contact page) ---------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+.field label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.field input, .field textarea {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.85em 1em;
+  font-family: var(--font-body);
+  color: var(--ink);
+  transition: border-color var(--dur-fast) var(--ease-soft);
+}
+.field input:focus, .field textarea:focus {
+  border-color: var(--accent-pink);
+  outline: none;
+}
+.field textarea { resize: vertical; min-height: 140px; }
+.form-note {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-faint);
+}
+.form-status {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  margin-top: var(--sp-3);
+  min-height: 1.4em;
+}
+.form-status.is-success { color: var(--accent-teal); }
+
+/* ---------------- Divider doodle ---------------- */
+.doodle-divider {
+  width: 100%;
+  max-width: 220px;
+  margin-block: var(--sp-6);
+  opacity: 0.8;
+}
+
+/* ---------------- Corkboard (home) ---------------- */
+.corkboard {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: var(--sp-7);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 2px, rgba(0,0,0,0.02) 2px 4px),
+    var(--bg-alt);
+  border: 1px dashed var(--line);
+  overflow: hidden;
+}
+
+/* ---------------- Scattered figure wrapper for decorative SVGs ---------------- */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+/* Utility rotation classes so markup can vary tilt without inline styles */
+.tilt--1 { --tilt: -4deg; }
+.tilt--2 { --tilt: -2deg; }
+.tilt--3 { --tilt: 1.5deg; }
+.tilt--4 { --tilt: 3deg; }
+.tilt--5 { --tilt: -1deg; }
