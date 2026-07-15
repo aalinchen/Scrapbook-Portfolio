@@ -1,14 +1,8 @@
 # ✂️ Scrapbook
 
-A free, five-page portfolio template built with **plain HTML, CSS, and
-JavaScript** — no build step, no framework, no `npm install`. Open
-`index.html` in a browser and it just works.
+A simple five-page portfolio template built with **plain HTML, CSS, and JavaScript**. No frameworks, no build tools, and nothing to install. Download it, open `index.html`, and you're ready to start.
 
-It's meant to be *read*, not just used: every file is commented, the
-markup is kept boring and predictable on purpose, and every page is full
-of placeholder content clearly marked for you to replace. If you're
-learning front-end development, this is designed to be picked apart —
-view source, poke at things in dev tools, and see what breaks.
+I built this to be something you can actually learn from, not just copy and paste. The code is intentionally straightforward, the files are commented, and the placeholder content is clearly marked so you always know what to replace. If you're learning front-end development, don't be afraid to open the files, inspect things in DevTools, and experiment with them.
 
 ![no build step](https://img.shields.io/badge/build%20step-none-ff2f9e)
 ![dependencies](https://img.shields.io/badge/dependencies-zero-21e6c1)
@@ -16,161 +10,172 @@ view source, poke at things in dev tools, and see what breaks.
 
 ---
 
-## Who this is for
-
-- You're learning HTML/CSS/JS and want a real, non-trivial codebase to
-  study — not a 20-line "hello world."
-- You want a portfolio site and don't want to fight a framework or build
-  tool to get one.
-- You want to see practical, working examples of: a dark/light theme
-  toggle, a mobile nav drawer, scroll animations, and a contact form —
-  all without a single dependency.
-
-You do **not** need to know React, Vue, Sass, Webpack, or anything else
-to use or understand this. If you can edit a text file and open it in a
-browser, you can use this template.
-
-## Quick start
-
-1. **Download and unzip** this folder.
-2. **Open `index.html`** in your browser — double-click it, or drag it
-   into a browser window. That's it, no install step.
-3. **Open the folder in a code editor** (VS Code, Sublime, whatever you
-   like) and start reading. `index.html` is the best place to begin.
-
-Some browsers restrict a few features (like `fetch`) on `file://` URLs,
-so if something seems off, run a tiny local server instead:
-
-```bash
-# Python (comes preinstalled on most systems)
-python3 -m http.server 8000
-
-# or, if you have Node.js
-npx serve .
-```
-
-Then visit `http://localhost:8000` in your browser.
-
-## File structure
-
-```
-scrapbook-portfolio/
-├── index.html          Home
-├── about.html            About
-├── projects.html         Projects
-├── journal.html           Journal / blog-style notes
-├── contact.html          Contact (working form UI, no backend)
-│
-├── css/
-│   ├── reset.css         Removes browser default styling
-│   ├── variables.css     Design tokens: colors, fonts, spacing (start here!)
-│   ├── base.css          Global element defaults (body, headings, links)
-│   ├── layout.css        Header, nav, footer, page grids
-│   ├── components.css    Buttons, cards, polaroids, tape, tags, forms
-│   ├── animations.css    @keyframes and scroll-reveal helper classes
-│   └── themes.css        Rules that only apply in dark or light mode
-│
-├── js/
-│   ├── theme.js           Dark/light toggle, explained inline
-│   ├── nav.js              Mobile menu open/close, explained inline
-│   ├── animations.js       Scroll-triggered reveals, explained inline
-│   └── main.js             Footer year, contact form demo, cursor sparkles
-│
-├── assets/svg/           19 original hand-drawn SVGs (tape, stars, icons...)
-└── README.md              You are here
-```
-
-Every page shares identical `<header>`, mobile `<nav>`, and `<footer>`
-markup — copy-pasted on purpose rather than templated, since there's no
-build tool here to generate it for you. Once you understand one page's
-structure, you understand all five.
-
-## How to make it yours
-
-Go roughly in this order:
-
-1. **Colors & fonts** — open `css/variables.css`. Every color in the site
-   is a variable like `--accent-pink`; change the hex value and it
-   updates everywhere the variable is used. Swap the three Google Fonts
-   linked in each page's `<head>` for your own pick from
-   [fonts.google.com](https://fonts.google.com), then update the family
-   names in `variables.css` to match.
-
-2. **Text content** — every page has HTML comments like
-   `<!-- ✏️ EDIT ME — Hero -->` marking the blocks meant to be replaced.
-   Search each file for `✏️` to find them all, or just search for
-   placeholder phrases like `[Your Name]`, `Project One`, or `20XX`.
-
-3. **Doodles** — everything decorative lives in `assets/svg/` as
-   individual files (not a sprite sheet), so you can open any one in a
-   text editor or design tool and change its colors, or drop in your own
-   SVGs. Position them using the `top` / `left` / `width` inline styles
-   next to each `<img class="doodle">`.
-
-4. **Add or remove sections** — sections are just `<section>` elements
-   inside `<main>`. Delete one you don't need, or copy one you like into
-   another page.
-
-5. **Wire up the contact form** — `js/main.js` currently fakes a
-   successful submission after a short delay so you can see what the
-   interaction looks like. Point `<form id="contact-form">` at a real
-   backend, a form service (Formspree, Getform, etc.), or a serverless
-   function, and remove the demo `setTimeout`.
-
-## Things to try (if you're learning)
-
-A few small exercises that touch different parts of the codebase:
-
-- Change `--accent-pink` in `variables.css` to a different color and
-  watch how much of the site updates from one change.
-- Add a sixth chip to the "toolbox" section on the home page — no CSS
-  changes needed, the layout wraps automatically.
-- Duplicate a `<figure class="polaroid">` on `projects.html` to add a
-  seventh project card.
-- Open dev tools, shrink the window below ~860px wide, and watch the
-  desktop nav disappear and the mobile menu button appear — that
-  breakpoint lives in `css/layout.css`.
-- Read `js/animations.js` top to bottom — it's under 30 lines and is a
-  clean, real-world example of `IntersectionObserver`.
-- Try disabling JavaScript entirely in your browser settings and reload
-  the page — notice the site still works: content is there, nav links
-  work, the reveal animations just show everything immediately instead
-  of fading in. That's called **progressive enhancement**.
-
-## Features
-
-- 5 complete, cross-linked pages
-- Fully responsive down to small mobile widths
-- Dark and light themes, persisted across visits, no flash of the wrong
-  theme on load
-- Custom mobile nav drawer with keyboard focus trap and Escape-to-close
-- Scroll-triggered reveal animations via `IntersectionObserver`
-- 19 original SVG doodles — washi tape, stars, flowers, arrows, hearts,
-  pins, clouds, icons — no icon library, easy to study or swap
-- A hand-drawn "scribble underline" that draws itself in under headings
-  on scroll
-- Respects `prefers-reduced-motion` — every animation has an off switch
-- Visible keyboard focus states throughout
-- Semantic HTML with `aria-current`, `aria-expanded`, `aria-live` used
-  where they matter, not sprinkled everywhere
-- Zero build step, zero JS/CSS dependencies — three Google Fonts loaded
-  via CDN are the only external requests the site makes
-
-## Browser support
-
-Modern evergreen browsers (Chrome, Firefox, Safari, Edge). The CSS uses
-`color-mix()`, `aspect-ratio`, and `:focus-visible`; the JS uses
-`IntersectionObserver` — all broadly supported since 2022+, with graceful
-fallbacks (see `prefers-reduced-motion` handling in `animations.css` and
-`animations.js`).
-
-## License
-
-Free to use, modify, and ship — personal or commercial, no attribution
-required. The SVG doodles are original and covered by the same terms.
-If you build something with it, no need to tell us, but it'd be nice.
+> **A quick note:** Feel free to use this template for personal projects, client work, or commercial sites. The only thing I ask is that you leave a small, visible credit somewhere on the finished site. It doesn't need to be front and center—a line in the footer or a credits page is more than enough. ❤️
 
 ---
 
-Made with tape, glue, and a few too many `border-radius` tweaks. Have fun
-picking it apart. ✨
+## Who it's for
+
+This template is for you if:
+
+* You're learning HTML, CSS, and JavaScript and want a project that's a little more interesting than another landing page tutorial.
+* You want a portfolio without having to learn a framework first.
+* You'd like to see how common front-end features are built using plain JavaScript, including a dark/light theme toggle, a mobile navigation menu, scroll animations, and a contact form.
+
+You don't need React, Vue, Sass, Webpack, or anything similar. If you can edit a text file and open it in your browser, you can use this template.
+
+---
+
+## Getting started
+
+1. Download or clone the project.
+2. Open `index.html` in your browser.
+3. Open the folder in your favorite code editor and start exploring.
+
+That's it.
+
+Some browsers restrict a few features (such as `fetch`) when opening files directly using `file://`. If something doesn't seem to work correctly, run a small local server instead:
+
+```bash
+# Python
+python3 -m http.server 8000
+
+# Node.js
+npx serve .
+```
+
+Then open `http://localhost:8000` in your browser.
+
+---
+
+## Project structure
+
+```text
+scrapbook-portfolio/
+├── index.html          Home
+├── about.html          About
+├── projects.html       Projects
+├── journal.html        Journal
+├── contact.html        Contact
+│
+├── css/
+│   ├── reset.css
+│   ├── variables.css
+│   ├── base.css
+│   ├── layout.css
+│   ├── components.css
+│   ├── animations.css
+│   └── themes.css
+│
+├── js/
+│   ├── theme.js
+│   ├── nav.js
+│   ├── animations.js
+│   └── main.js
+│
+├── assets/svg/
+└── README.md
+```
+
+Since there's no build process, every page includes its own copy of the header, navigation, and footer. It may seem repetitive, but it keeps everything simple and makes the project easier to understand. Once you've looked through one page, the others should feel familiar.
+
+---
+
+## Making it your own
+
+I'd recommend customizing things in roughly this order.
+
+### 1. Colors and fonts
+
+Open `css/variables.css`.
+
+Most colors are stored as CSS variables, so changing a single value updates it everywhere it's used. If you'd like different fonts, swap the Google Fonts links in each page and update the corresponding font-family variables.
+
+### 2. Replace the placeholder content
+
+Every page includes comments like:
+
+```html
+<!-- ✏️ EDIT ME -->
+```
+
+You can also search for placeholders like `[Your Name]`, `Project One`, or `20XX`.
+
+### 3. Customize the SVG doodles
+
+All decorative graphics live inside `assets/svg/` as individual SVG files.
+
+You can edit them directly, replace them with your own artwork, or reposition them by adjusting the inline styles where they're used.
+
+### 4. Add or remove sections
+
+Each page is built from regular `<section>` elements inside `<main>`.
+
+Delete sections you don't need, duplicate ones you like, or move them between pages.
+
+### 5. Connect the contact form
+
+The contact form currently simulates a successful submission so you can preview the interaction.
+
+To make it functional, connect it to your own backend, a service like Formspree or Getform, or a serverless function, then replace the demo `setTimeout`.
+
+---
+
+## Things to try
+
+If you're using this as a learning project, here are a few ideas:
+
+* Change `--accent-pink` in `variables.css` and see how much of the site updates.
+* Add another toolbox chip on the homepage without touching the CSS.
+* Duplicate one of the project cards to add another project.
+* Resize your browser below roughly **860px** and watch the desktop navigation switch to the mobile menu.
+* Read through `js/animations.js`. It's a short, beginner-friendly example of using `IntersectionObserver`.
+* Disable JavaScript and reload the page. The content is still accessible, navigation still works, and only the enhanced interactions disappear. That's progressive enhancement in action.
+
+---
+
+## Features
+
+* Five complete, responsive pages
+* Dark and light themes with saved preference
+* Responsive mobile navigation
+* Scroll reveal animations using `IntersectionObserver`
+* Original hand-drawn SVG doodles
+* Animated scribble underline effect
+* Respects `prefers-reduced-motion`
+* Visible keyboard focus styles
+* Semantic HTML with appropriate ARIA attributes
+* Zero frameworks, zero dependencies, and no build step
+
+---
+
+## Browser support
+
+The template works in current versions of Chrome, Firefox, Safari, and Edge.
+
+It uses modern features such as `color-mix()`, `aspect-ratio`, `:focus-visible`, and `IntersectionObserver`. If a browser doesn't support every feature, the site still remains fully usable—it simply skips some of the visual enhancements.
+
+---
+
+## License
+
+Feel free to use, modify, and distribute this template for personal or commercial projects.
+
+The only requirement is that you keep a small, visible credit somewhere on the finished site, as mentioned above.
+
+The included SVG illustrations are original and covered by the same terms.
+
+If you build something with it, I'd love to see it—but no pressure.
+
+---
+
+Built with a lot of coffee, way too many tiny CSS tweaks, and an unreasonable amount of `border-radius`. Have fun with it. ✨
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffb6df,50:ff4fa8,100:ff007f&height=100&section=footer" width="100%"/>
+
+
+</div>
